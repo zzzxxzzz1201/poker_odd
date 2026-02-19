@@ -20,7 +20,10 @@
     "email": "Email",
     "password": "密碼",
     "submit": "登入",
-    "failed": "登入失敗"
+    "failed": "登入失敗",
+    "or": "或",
+    "googleLogin": "使用 Google 帳號登入",
+    "googleFailed": "Google 登入失敗，請重試"
   },
   "register": {
     "title": "註冊",
@@ -28,7 +31,12 @@
     "email": "Email",
     "password": "密碼",
     "submit": "註冊",
-    "failed": "註冊失敗"
+    "failed": "註冊失敗",
+    "or": "或",
+    "googleRegister": "使用 Google 帳號註冊"
+  },
+  "oauth": {
+    "processing": "處理中，請稍候..."
   },
   "profile": {
     "title": "個人資料",

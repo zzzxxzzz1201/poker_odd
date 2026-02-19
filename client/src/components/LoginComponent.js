@@ -1,14 +1,21 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import authService from "../services/auth.service";
 
 const LoginComponent = ({ setCurrentUser }) => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    if (searchParams.get("error") === "google_failed") {
+      setMessage(t("login.googleFailed"));
+    }
+  }, [searchParams, t]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -49,10 +56,21 @@ const LoginComponent = ({ setCurrentUser }) => {
                 required
               />
             </div>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-primary w-100">
               {t("login.submit")}
             </button>
           </form>
+          <div className="d-flex align-items-center my-3">
+            <hr className="flex-grow-1" />
+            <span className="mx-3 text-muted">{t("login.or")}</span>
+            <hr className="flex-grow-1" />
+          </div>
+          <a
+            href="http://localhost:8080/api/user/google"
+            className="btn btn-outline-danger w-100"
+          >
+            {t("login.googleLogin")}
+          </a>
         </div>
       </div>
     </div>

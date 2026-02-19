@@ -60,10 +60,21 @@ const RegisterComponent = () => {
                 minLength={6}
               />
             </div>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-primary w-100">
               {t("register.submit")}
             </button>
           </form>
+          <div className="d-flex align-items-center my-3">
+            <hr className="flex-grow-1" />
+            <span className="mx-3 text-muted">{t("register.or")}</span>
+            <hr className="flex-grow-1" />
+          </div>
+          <a
+            href="http://localhost:8080/api/user/google"
+            className="btn btn-outline-danger w-100"
+          >
+            {t("register.googleRegister")}
+          </a>
         </div>
       </div>
     </div>

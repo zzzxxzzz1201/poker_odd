@@ -1,9 +1,15 @@
-const { DataTypes } = require("sequelize");
+const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 const bcrypt = require("bcrypt");
 
-const User = sequelize.define(
-  "User",
+class User extends Model {
+  async comparePassword(password) {
+    if (!this.password) return false;
+    return bcrypt.compare(password, this.password);
+  }
+}
+
+User.init(
   {
     id: {
       type: DataTypes.INTEGER.UNSIGNED,
@@ -21,23 +27,27 @@ const User = sequelize.define(
     },
     password: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true,
+    },
+    google_id: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+      unique: true,
     },
   },
   {
+    sequelize,
     tableName: "users",
     underscored: true,
     hooks: {
       beforeCreate: async (user) => {
-        const hash = await bcrypt.hash(user.password, 10);
-        user.password = hash;
+        if (user.password) {
+          const hash = await bcrypt.hash(user.password, 10);
+          user.password = hash;
+        }
       },
     },
   }
 );
-
-User.prototype.comparePassword = async function (password) {
-  return bcrypt.compare(password, this.password);
-};
 
 module.exports = User;

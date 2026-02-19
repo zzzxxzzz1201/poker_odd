@@ -6,6 +6,7 @@ import LoginComponent from "./components/LoginComponent";
 import RegisterComponent from "./components/RegisterComponent";
 import ProfileComponent from "./components/ProfileComponent";
 import PokerCalculator from "./components/poker/PokerCalculator";
+import OAuthCallbackComponent from "./components/OAuthCallbackComponent";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -25,6 +26,10 @@ function App() {
         <Route
           path="/profile"
           element={<ProfileComponent currentUser={currentUser} />}
+        />
+        <Route
+          path="/oauth/callback"
+          element={<OAuthCallbackComponent setCurrentUser={setCurrentUser} />}
         />
         <Route
           path="/poker"

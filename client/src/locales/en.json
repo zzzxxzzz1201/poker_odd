@@ -20,7 +20,10 @@
     "email": "Email",
     "password": "Password",
     "submit": "Login",
-    "failed": "Login failed"
+    "failed": "Login failed",
+    "or": "or",
+    "googleLogin": "Sign in with Google",
+    "googleFailed": "Google login failed, please try again"
   },
   "register": {
     "title": "Register",
@@ -28,7 +31,12 @@
     "email": "Email",
     "password": "Password",
     "submit": "Register",
-    "failed": "Registration failed"
+    "failed": "Registration failed",
+    "or": "or",
+    "googleRegister": "Sign up with Google"
+  },
+  "oauth": {
+    "processing": "Processing, please wait..."
   },
   "profile": {
     "title": "Profile",

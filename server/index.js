@@ -19,7 +19,7 @@ app.use("/api/user", authRoute);
 app.use("/api/poker", passport.authenticate("jwt", { session: false }), pokerRoute);
 
 sequelize
-  .sync()
+  .sync({ alter: true })
   .then(() => {
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
