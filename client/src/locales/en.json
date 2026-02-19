@@ -1,0 +1,87 @@
+{
+  "nav": {
+    "home": "Home",
+    "poker": "Poker Calculator",
+    "profile": "Profile",
+    "register": "Register",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "home": {
+    "title": "Texas Hold'em Probability Calculator",
+    "subtitle": "Calculate win rates and hand probabilities to improve your poker strategy",
+    "loginPrompt": "Please login or register to use the poker calculator",
+    "login": "Login",
+    "register": "Register",
+    "start": "Start Calculating"
+  },
+  "login": {
+    "title": "Login",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Login",
+    "failed": "Login failed"
+  },
+  "register": {
+    "title": "Register",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Register",
+    "failed": "Registration failed"
+  },
+  "profile": {
+    "title": "Profile",
+    "username": "Username: ",
+    "email": "Email: "
+  },
+  "poker": {
+    "title": "Texas Hold'em Probability Calculator",
+    "subtitle": "Calculate win rates and hand probabilities",
+    "playerHands": "Player Hands",
+    "removePlayer": "- Remove",
+    "addPlayer": "+ Add",
+    "playerCount": "{{count}} Players",
+    "player": "Player {{number}}",
+    "board": "Community Cards",
+    "preflopNoBoard": "No community cards in Preflop stage",
+    "calculating": "Calculating...",
+    "calculate": "Calculate",
+    "clearAll": "Clear All",
+    "incompleteHand": "Please select complete hand for Player {{number}}",
+    "incompleteBoard": "Please select all community cards ({{count}} required)",
+    "calculateFailed": "Calculation failed",
+    "error": "Error ({{status}}): {{message}}",
+    "pickCard": "Pick a Card",
+    "clearCard": "Clear Card",
+    "results": "Results",
+    "simulationCount": "{{count}} simulations calculated",
+    "winRate": "Win",
+    "tieRate": "Tie",
+    "handOdds": "Hand Probabilities",
+    "stages": {
+      "preflop": "Preflop (0)",
+      "flop": "Flop (3)",
+      "turn": "Turn (4)",
+      "river": "River (5)"
+    },
+    "suits": {
+      "hearts": "♥ Hearts",
+      "diamonds": "♦ Diamonds",
+      "clubs": "♣ Clubs",
+      "spades": "♠ Spades"
+    },
+    "hands": {
+      "royal_flush": "Royal Flush",
+      "straight_flush": "Straight Flush",
+      "four_kind": "Four of a Kind",
+      "full_house": "Full House",
+      "flush": "Flush",
+      "straight": "Straight",
+      "three_kind": "Three of a Kind",
+      "two_pair": "Two Pair",
+      "one_pair": "One Pair",
+      "high_card": "High Card"
+    }
+  }
+}

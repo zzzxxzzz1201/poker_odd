@@ -1,14 +1,17 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const RANKS = ["A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2"];
 const SUIT_LIST = [
-  { code: "h", symbol: "\u2665", label: "\u2665 \u7d05\u5fc3", name: "hearts" },
-  { code: "d", symbol: "\u2666", label: "\u2666 \u65b9\u584a", name: "diamonds" },
-  { code: "c", symbol: "\u2663", label: "\u2663 \u6885\u82b1", name: "clubs" },
-  { code: "s", symbol: "\u2660", label: "\u2660 \u9ed1\u6843", name: "spades" },
+  { code: "h", name: "hearts" },
+  { code: "d", name: "diamonds" },
+  { code: "c", name: "clubs" },
+  { code: "s", name: "spades" },
 ];
 
 const CardPicker = ({ show, usedCards, currentCard, onSelect, onClear, onClose }) => {
+  const { t } = useTranslation();
+
   if (!show) return null;
 
   const handleOverlayClick = (e) => {
@@ -19,7 +22,7 @@ const CardPicker = ({ show, usedCards, currentCard, onSelect, onClear, onClose }
     <div className="poker-picker-overlay" onClick={handleOverlayClick}>
       <div className="poker-picker-modal">
         <div className="poker-picker-header">
-          <h3>選擇一張牌</h3>
+          <h3>{t("poker.pickCard")}</h3>
           <button className="poker-close-btn" onClick={onClose}>
             &times;
           </button>
@@ -28,7 +31,7 @@ const CardPicker = ({ show, usedCards, currentCard, onSelect, onClear, onClose }
           {SUIT_LIST.map((suit) => (
             <div className="poker-suit-section" key={suit.code}>
               <div className={`poker-suit-label poker-suit-label-${suit.name}`}>
-                {suit.label}
+                {t(`poker.suits.${suit.name}`)}
               </div>
               <div className="poker-suit-cards">
                 {RANKS.map((rank) => {
@@ -50,7 +53,7 @@ const CardPicker = ({ show, usedCards, currentCard, onSelect, onClear, onClose }
         </div>
         <div className="poker-picker-footer">
           <button className="btn btn-secondary btn-sm" onClick={onClear}>
-            清除此牌
+            {t("poker.clearCard")}
           </button>
         </div>
       </div>

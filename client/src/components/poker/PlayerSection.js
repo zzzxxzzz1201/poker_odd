@@ -1,26 +1,29 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import PokerCard from "./PokerCard";
 
 const PlayerSection = ({ players, onCardClick, onAddPlayer, onRemovePlayer }) => {
+  const { t } = useTranslation();
+
   return (
     <section className="poker-section">
       <div className="poker-section-header">
-        <h2>玩家手牌</h2>
+        <h2>{t("poker.playerHands")}</h2>
         <div className="poker-player-controls">
           <button
             className="btn btn-outline-secondary btn-sm"
             onClick={onRemovePlayer}
             disabled={players.length <= 2}
           >
-            - 移除玩家
+            {t("poker.removePlayer")}
           </button>
-          <span className="poker-player-count">{players.length} 位玩家</span>
+          <span className="poker-player-count">{t("poker.playerCount", { count: players.length })}</span>
           <button
             className="btn btn-outline-secondary btn-sm"
             onClick={onAddPlayer}
             disabled={players.length >= 6}
           >
-            + 新增玩家
+            {t("poker.addPlayer")}
           </button>
         </div>
       </div>
@@ -32,7 +35,7 @@ const PlayerSection = ({ players, onCardClick, onAddPlayer, onRemovePlayer }) =>
               key={pIdx}
               className={`poker-player-card${hasCards ? " poker-player-card-active" : ""}`}
             >
-              <h3>玩家 {pIdx + 1}</h3>
+              <h3>{t("poker.player", { number: pIdx + 1 })}</h3>
               <div className="poker-player-hand">
                 {player.cards.map((card, cIdx) => (
                   <PokerCard

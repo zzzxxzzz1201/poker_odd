@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import PlayerSection from "./PlayerSection";
 import BoardSection from "./BoardSection";
 import CardPicker from "./CardPicker";
@@ -17,6 +18,7 @@ function getCardCountForStage(stage) {
 }
 
 const PokerCalculator = () => {
+  const { t } = useTranslation();
   const [players, setPlayers] = useState([
     { cards: [null, null] },
     { cards: [null, null] },
@@ -136,14 +138,14 @@ const PokerCalculator = () => {
   const handleCalculate = async () => {
     const incomplete = players.findIndex((p) => p.cards.some((c) => c === null));
     if (incomplete !== -1) {
-      setError(`請為玩家 ${incomplete + 1} 選擇完整的手牌`);
+      setError(t("poker.incompleteHand", { number: incomplete + 1 }));
       return;
     }
 
     const expectedCount = getCardCountForStage(boardStage);
     const filledBoard = board.filter((c) => c !== null);
     if (expectedCount > 0 && filledBoard.length !== expectedCount) {
-      setError(`請選擇完整的公牌 (需要 ${expectedCount} 張)`);
+      setError(t("poker.incompleteBoard", { count: expectedCount }));
       return;
     }
 
@@ -158,8 +160,8 @@ const PokerCalculator = () => {
       setResults(response.data.results);
       setSimulations(response.data.simulations);
     } catch (err) {
-      const msg = err.response?.data?.message || err.response?.statusText || err.message || "計算失敗";
-      setError(`錯誤 (${err.response?.status || "network"}): ${msg}`);
+      const msg = err.response?.data?.message || err.response?.statusText || err.message || t("poker.calculateFailed");
+      setError(t("poker.error", { status: err.response?.status || "network", message: msg }));
     } finally {
       setLoading(false);
     }
@@ -168,8 +170,8 @@ const PokerCalculator = () => {
   return (
     <div className="poker-container">
       <header className="poker-header">
-        <h1>德州撲克機率計算器</h1>
-        <p>計算勝率與牌型機率</p>
+        <h1>{t("poker.title")}</h1>
+        <p>{t("poker.subtitle")}</p>
       </header>
 
       <PlayerSection
@@ -192,10 +194,10 @@ const PokerCalculator = () => {
           onClick={handleCalculate}
           disabled={loading}
         >
-          {loading ? "計算中..." : "計算機率"}
+          {loading ? t("poker.calculating") : t("poker.calculate")}
         </button>
         <button className="btn btn-secondary" onClick={handleClearAll}>
-          清除所有
+          {t("poker.clearAll")}
         </button>
       </div>
 

@@ -1,14 +1,20 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import authService from "../services/auth.service";
 
 const NavComponent = ({ currentUser, setCurrentUser }) => {
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
 
   const handleLogout = () => {
     authService.logout();
     setCurrentUser(null);
     navigate("/");
+  };
+
+  const toggleLang = () => {
+    i18n.changeLanguage(i18n.language === "zh-TW" ? "en" : "zh-TW");
   };
 
   return (
@@ -29,42 +35,50 @@ const NavComponent = ({ currentUser, setCurrentUser }) => {
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
               <Link className="nav-link" to="/">
-                首頁
+                {t("nav.home")}
               </Link>
             </li>
             {currentUser && (
               <>
                 <li className="nav-item">
                   <Link className="nav-link" to="/poker">
-                    撲克計算器
+                    {t("nav.poker")}
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/profile">
-                    個人資料
+                    {t("nav.profile")}
                   </Link>
                 </li>
               </>
             )}
           </ul>
           <ul className="navbar-nav">
+            <li className="nav-item">
+              <button
+                className="btn btn-outline-info btn-sm me-2"
+                onClick={toggleLang}
+              >
+                {i18n.language === "zh-TW" ? "EN" : "中"}
+              </button>
+            </li>
             {!currentUser ? (
               <>
                 <li className="nav-item">
                   <Link className="nav-link" to="/register">
-                    註冊
+                    {t("nav.register")}
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/login">
-                    登入
+                    {t("nav.login")}
                   </Link>
                 </li>
               </>
             ) : (
               <li className="nav-item">
                 <button className="btn btn-outline-light btn-sm" onClick={handleLogout}>
-                  登出
+                  {t("nav.logout")}
                 </button>
               </li>
             )}

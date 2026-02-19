@@ -1,0 +1,87 @@
+{
+  "nav": {
+    "home": "首頁",
+    "poker": "撲克計算器",
+    "profile": "個人資料",
+    "register": "註冊",
+    "login": "登入",
+    "logout": "登出"
+  },
+  "home": {
+    "title": "德州撲克機率計算器",
+    "subtitle": "計算勝率與牌型機率，提升你的撲克策略",
+    "loginPrompt": "請先登入或註冊以使用撲克計算器",
+    "login": "登入",
+    "register": "註冊",
+    "start": "開始計算"
+  },
+  "login": {
+    "title": "登入",
+    "email": "Email",
+    "password": "密碼",
+    "submit": "登入",
+    "failed": "登入失敗"
+  },
+  "register": {
+    "title": "註冊",
+    "username": "使用者名稱",
+    "email": "Email",
+    "password": "密碼",
+    "submit": "註冊",
+    "failed": "註冊失敗"
+  },
+  "profile": {
+    "title": "個人資料",
+    "username": "使用者名稱：",
+    "email": "Email："
+  },
+  "poker": {
+    "title": "德州撲克機率計算器",
+    "subtitle": "計算勝率與牌型機率",
+    "playerHands": "玩家手牌",
+    "removePlayer": "- 移除玩家",
+    "addPlayer": "+ 新增玩家",
+    "playerCount": "{{count}} 位玩家",
+    "player": "玩家 {{number}}",
+    "board": "公牌",
+    "preflopNoBoard": "Preflop 階段無公牌",
+    "calculating": "計算中...",
+    "calculate": "計算機率",
+    "clearAll": "清除所有",
+    "incompleteHand": "請為玩家 {{number}} 選擇完整的手牌",
+    "incompleteBoard": "請選擇完整的公牌 (需要 {{count}} 張)",
+    "calculateFailed": "計算失敗",
+    "error": "錯誤 ({{status}}): {{message}}",
+    "pickCard": "選擇一張牌",
+    "clearCard": "清除此牌",
+    "results": "計算結果",
+    "simulationCount": "共計算 {{count}} 種可能",
+    "winRate": "勝率",
+    "tieRate": "平手",
+    "handOdds": "牌型機率",
+    "stages": {
+      "preflop": "Preflop (0張)",
+      "flop": "Flop (3張)",
+      "turn": "Turn (4張)",
+      "river": "River (5張)"
+    },
+    "suits": {
+      "hearts": "♥ 紅心",
+      "diamonds": "♦ 方塊",
+      "clubs": "♣ 梅花",
+      "spades": "♠ 黑桃"
+    },
+    "hands": {
+      "royal_flush": "皇家同花順",
+      "straight_flush": "同花順",
+      "four_kind": "四條",
+      "full_house": "葫蘆",
+      "flush": "同花",
+      "straight": "順子",
+      "three_kind": "三條",
+      "two_pair": "兩對",
+      "one_pair": "一對",
+      "high_card": "高牌"
+    }
+  }
+}

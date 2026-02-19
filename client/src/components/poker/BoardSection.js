@@ -1,31 +1,29 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import PokerCard from "./PokerCard";
 
-const STAGES = [
-  { key: "preflop", label: "Preflop (0\u5f35)" },
-  { key: "flop", label: "Flop (3\u5f35)" },
-  { key: "turn", label: "Turn (4\u5f35)" },
-  { key: "river", label: "River (5\u5f35)" },
-];
+const STAGE_KEYS = ["preflop", "flop", "turn", "river"];
 
 const BoardSection = ({ board, boardStage, onStageChange, onCardClick }) => {
+  const { t } = useTranslation();
+
   return (
     <section className="poker-section">
-      <h2>公牌</h2>
+      <h2>{t("poker.board")}</h2>
       <div className="poker-board-stage-selector">
-        {STAGES.map((s) => (
+        {STAGE_KEYS.map((key) => (
           <button
-            key={s.key}
-            className={`poker-stage-btn${boardStage === s.key ? " poker-stage-btn-active" : ""}`}
-            onClick={() => onStageChange(s.key)}
+            key={key}
+            className={`poker-stage-btn${boardStage === key ? " poker-stage-btn-active" : ""}`}
+            onClick={() => onStageChange(key)}
           >
-            {s.label}
+            {t(`poker.stages.${key}`)}
           </button>
         ))}
       </div>
       <div className="poker-board-cards">
         {board.length === 0 ? (
-          <p style={{ color: "#6b7280" }}>Preflop 階段無公牌</p>
+          <p style={{ color: "#6b7280" }}>{t("poker.preflopNoBoard")}</p>
         ) : (
           board.map((card, idx) => (
             <PokerCard

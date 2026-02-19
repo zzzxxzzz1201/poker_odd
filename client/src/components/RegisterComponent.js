@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import authService from "../services/auth.service";
 
 const RegisterComponent = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,7 +17,7 @@ const RegisterComponent = () => {
       await authService.register(username, email, password);
       navigate("/login");
     } catch (err) {
-      setMessage(err.response?.data?.message || "註冊失敗");
+      setMessage(err.response?.data?.message || t("register.failed"));
     }
   };
 
@@ -23,11 +25,11 @@ const RegisterComponent = () => {
     <div className="container py-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
-          <h2>註冊</h2>
+          <h2>{t("register.title")}</h2>
           {message && <div className="alert alert-danger">{message}</div>}
           <form onSubmit={handleRegister}>
             <div className="mb-3">
-              <label className="form-label">使用者名稱</label>
+              <label className="form-label">{t("register.username")}</label>
               <input
                 type="text"
                 className="form-control"
@@ -38,7 +40,7 @@ const RegisterComponent = () => {
               />
             </div>
             <div className="mb-3">
-              <label className="form-label">Email</label>
+              <label className="form-label">{t("register.email")}</label>
               <input
                 type="email"
                 className="form-control"
@@ -48,7 +50,7 @@ const RegisterComponent = () => {
               />
             </div>
             <div className="mb-3">
-              <label className="form-label">密碼</label>
+              <label className="form-label">{t("register.password")}</label>
               <input
                 type="password"
                 className="form-control"
@@ -59,7 +61,7 @@ const RegisterComponent = () => {
               />
             </div>
             <button type="submit" className="btn btn-primary">
-              註冊
+              {t("register.submit")}
             </button>
           </form>
         </div>
